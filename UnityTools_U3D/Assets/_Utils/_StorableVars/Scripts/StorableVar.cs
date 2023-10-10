@@ -47,6 +47,7 @@ public abstract class StorableVar
         {
             CleanPlayerPrefs();
             CleanPlayerPrefsByKey(VarName);
+            Debug.LogError("StorableVar String - Error: " + e.Message);
             return "";
         }
     }
@@ -75,6 +76,7 @@ public abstract class StorableVar
         catch (Exception e)
         {
             CleanPlayerPrefs();
+            Debug.LogError("StorableVar Int - Error: " + e.Message);
             return 0;
         }
     }
@@ -103,6 +105,7 @@ public abstract class StorableVar
         catch (Exception e)
         {
             CleanPlayerPrefs();
+            Debug.LogError("StorableVar Float - Error: " + e.Message);
             return 0;
         }
     }
@@ -131,6 +134,7 @@ public abstract class StorableVar
         catch (Exception e)
         {
             CleanPlayerPrefs();
+            Debug.LogError("StorableVar Long - Error: " + e.Message);
             return 0;
         }
     }
@@ -157,6 +161,7 @@ public abstract class StorableVar
         catch (Exception e)
         {
             CleanPlayerPrefs();
+            Debug.LogError("StorableVar Bool - Error: " + e.Message);
             return false;
         }
     }
@@ -177,6 +182,7 @@ public abstract class StorableVar
         catch (Exception e)
         {
             CleanPlayerPrefs();
+            Debug.LogError("StorableVar Bool - Error: " + e.Message);
             return null;
         }
     }
@@ -205,6 +211,7 @@ public abstract class StorableVar
         catch (Exception e)
         {
             CleanPlayerPrefs();
+            Debug.LogError("StorableVar Vector3 - Error: " + e.Message);
             return Vector3.positiveInfinity;
         }
     }
@@ -234,6 +241,7 @@ public abstract class StorableVar
         catch (Exception e)
         {
             CleanPlayerPrefs();
+            Debug.LogError("StorableVar Dictionary - Error: " + e.Message);
             return new Dictionary<TKey, TValue>();
         }
     }

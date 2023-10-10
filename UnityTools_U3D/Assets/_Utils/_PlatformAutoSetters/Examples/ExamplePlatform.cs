@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ExampleBehaviour : MonoBehaviour
+public class ExamplePlatform : MonoBehaviour
 {
     void Start()
     {
-        Debug.Log("[ExampleBehaviour] Start()");
+        Debug.Log("[ExamplePlatform] Start()");
     }
 }
