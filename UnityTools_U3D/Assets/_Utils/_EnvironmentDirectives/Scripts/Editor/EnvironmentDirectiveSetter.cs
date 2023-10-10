@@ -1,23 +1,36 @@
 using UnityEditor;
+using UnityEngine;
 
 public static class EnvironmentDirectiveSetter
 {
+    public static string CurrentEnvironmentDirectives
+    {
+        get
+        {
+            return PlayerSettings.GetScriptingDefineSymbols(UnityEditor.Build.NamedBuildTarget.FromBuildTargetGroup(EditorUserBuildSettings.selectedBuildTargetGroup));
+        }
+        set
+        {
+            PlayerSettings.SetScriptingDefineSymbols(UnityEditor.Build.NamedBuildTarget.FromBuildTargetGroup(EditorUserBuildSettings.selectedBuildTargetGroup), value);
+            DebugCurrentEnvironment();
+        }
+    }
+    
     [MenuItem("Build/Set Environment/Dev")]
     public static void SetDevDirectives()
     {
-        SetDirectives(EnvironmentDirectives.DEV);
+        CurrentEnvironmentDirectives = EnvironmentDirectives.DEV;
     }
 
     [MenuItem("Build/Set Environment/Prod")]
     public static void SetProdDirectives()
     {
-        SetDirectives(EnvironmentDirectives.PROD);
+        CurrentEnvironmentDirectives = EnvironmentDirectives.PROD;
     }
-
-    private static void SetDirectives(string directive)
+    
+    [MenuItem("Build/Set Environment/Current?")]
+    public static void DebugCurrentEnvironment()
     {
-        PlayerSettings.SetScriptingDefineSymbols(UnityEditor.Build.NamedBuildTarget.Standalone, directive);
-        PlayerSettings.SetScriptingDefineSymbols(UnityEditor.Build.NamedBuildTarget.WebGL, directive);
-        PlayerSettings.SetScriptingDefineSymbols(UnityEditor.Build.NamedBuildTarget.Android, directive);
+        Debug.Log(CurrentEnvironmentDirectives);
     }
 }
